@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "selected_works",
+  "info": {
+    "singularName": "selected-work",
+    "pluralName": "selected-works",
+    "displayName": "selected-work"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "position": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "unique": false
+    },
+    "artwork": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artwork.artwork"
+    }
+  }
+}
