@@ -1,6 +1,8 @@
 import ProjectCarousel from "@/components/ProjectCarousel";
-import { getProjects } from "@/lib/strapi";
+import { getProjects } from "@/lib/strapi.server";
 import type { Lang } from "@/lib/types";
+import Link from "next/link";
+
 
 export default async function ProjectsPage({ params, }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
@@ -15,9 +17,10 @@ export default async function ProjectsPage({ params, }: { params: Promise<{ lang
       <div className="mx-auto max-w-full space-y-28">
         {projects.map((p) => (
           <section key={p.documentId ?? p.id} className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-10 items-center">
-            {/* left text */}
             <div className="max-w-[360px]">
-              <h1 className="italic text-2xl text-black/80">{p.title}</h1>
+              <Link href={`/${lang}/projects/${p.slug}`} className="hover:opacity-80 transition">
+                <h1 className="italic text-2xl text-black/80">{p.title}</h1>
+              </Link>
 
               {p.description && (
                 <p className="mt-3 text-lg leading-relaxed text-black/80 whitespace-pre-line">

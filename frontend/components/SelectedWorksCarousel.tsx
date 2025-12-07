@@ -1,6 +1,6 @@
 "use client";
 
-import { getStrapiMedia } from "@/lib/strapi";
+import { getStrapiMedia } from "@/lib/strapi.shared";
 import type { SelectedWork } from "@/lib/types";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";

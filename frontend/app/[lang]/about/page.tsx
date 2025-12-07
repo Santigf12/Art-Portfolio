@@ -1,5 +1,5 @@
 // app/about/page.tsx
-import { getAbout } from "@/lib/strapi";
+import { getAbout } from "@/lib/strapi.server";
 import type { Lang } from "@/lib/types";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 

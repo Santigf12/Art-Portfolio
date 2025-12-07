@@ -1,4 +1,4 @@
-import { getArtworks, getStrapiMedia } from "@/lib/strapi";
+import { getArtworks, getStrapiMedia } from "@/lib/strapi.server";
 import type { Artwork } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";

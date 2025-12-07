@@ -1,6 +1,6 @@
 // app/selected-works/page.tsx
 import SelectedWorksCarousel from "@/components/SelectedWorksCarousel";
-import { getSelectedWorks } from "@/lib/strapi";
+import { getSelectedWorks } from "@/lib/strapi.server";
 import type { Lang } from "@/lib/types";
 
 export default async function SelectedWorksPage({ params, }: { params: Promise<{ lang: Lang }> }) {
