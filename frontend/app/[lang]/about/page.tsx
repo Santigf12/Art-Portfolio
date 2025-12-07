@@ -1,9 +1,11 @@
 // app/about/page.tsx
 import { getAbout } from "@/lib/strapi";
+import type { Lang } from "@/lib/types";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-export default async function AboutPage() {
-  const about = await getAbout();
+export default async function AboutPage({ params, }: { params: Promise<{ lang: Lang }> }) {
+  const { lang } = await params;
+  const about = await getAbout(lang);
   if (!about) return <div className="p-12">About content not found</div>;
 
   return (

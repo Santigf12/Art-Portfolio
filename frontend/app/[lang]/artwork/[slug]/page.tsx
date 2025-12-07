@@ -1,12 +1,13 @@
 import { getArtworkBySlug, getStrapiMedia } from "@/lib/strapi";
+import type { Lang } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default async function ArtworkSlugPage({ params, }: { params: Promise<{ slug: string }>; }) {
-  const { slug } = await params;
+export default async function ArtworkSlugPage({ params, }: { params: Promise<{ slug: string, lang: Lang }>; }) {
+  const { slug, lang } = await params;
 
-  const artwork = await getArtworkBySlug(slug);
+  const artwork = await getArtworkBySlug(slug, lang);
   if (!artwork) return notFound();
 
   const img = artwork.image;

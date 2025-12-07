@@ -63,13 +63,11 @@ export interface Project {
   id: number;
   documentId: string;
   title: string;
-  description: string;
-  location: string | null;
+  description: string | null;
+  location: string | null; // e.g. "Mexico City"
+  order: number | null;
   slug: string;
-  order: number;
-  year: number | null;
-  coverImage: StrapiImage;
-  images: StrapiImage[];
+  images: StrapiImage[]
   createdAt: string;
   updatedAt: string;
 }
@@ -97,3 +95,6 @@ export interface StrapiResponse<T> {
   };
 }
 
+export const LOCALES = ["en", "es", "fr"] as const;
+
+export type Lang = (typeof LOCALES)[number];

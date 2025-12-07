@@ -56,20 +56,6 @@
         "files"
       ]
     },
-    "coverimage": {
-      "type": "media",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
     "slug": {
       "type": "uid",
       "pluginOptions": {
