@@ -80,14 +80,14 @@
       "targetField": "title",
       "required": true
     },
-    "position": {
+    "order": {
       "type": "integer",
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "required": true,
+      "required": false,
       "default": 0,
       "unique": false
     },

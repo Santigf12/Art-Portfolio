@@ -11,10 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "position": {
+    "order": {
       "type": "integer",
-      "required": true,
-      "default": 0,
+      "required": false,
       "unique": false
     },
     "artwork": {

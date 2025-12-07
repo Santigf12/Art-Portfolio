@@ -630,8 +630,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    position: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
+    order: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -699,9 +698,7 @@ export interface ApiSelectedWorkSelectedWork
       'api::selected-work.selected-work'
     > &
       Schema.Attribute.Private;
-    position: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
+    order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

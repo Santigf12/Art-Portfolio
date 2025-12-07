@@ -45,7 +45,7 @@ export async function getArtworkBySlug(slug: string): Promise<Artwork | null> {
 
 export async function getSelectedWorks(): Promise<SelectedWork[]> {
   const response = await fetchAPI<SelectedWork[]>("/selected-works", {
-    populate: "artwork,artwork.image",
+    "populate[artwork][populate]": "image",
     sort: "order:asc",
   });
   return response.data;

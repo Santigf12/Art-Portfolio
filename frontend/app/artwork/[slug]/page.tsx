@@ -3,11 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default async function ArtworkSlugPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ArtworkSlugPage({ params, }: { params: Promise<{ slug: string }>; }) {
   const { slug } = await params;
 
   const artwork = await getArtworkBySlug(slug);
@@ -20,14 +16,7 @@ export default async function ArtworkSlugPage({
   const w = img.width ?? 1200;
   const h = img.height ?? 1600;
 
-  const caption = [
-    artwork.title,
-    artwork.year ? String(artwork.year) : null,
-    artwork.medium,
-    artwork.dimensions,
-  ]
-    .filter(Boolean)
-    .join(". ");
+  const caption = [ artwork.title, artwork.year ? String(artwork.year) : null, artwork.medium, artwork.dimensions, ].filter(Boolean).join(". ");
 
   return (
     <div className="w-full">
@@ -46,7 +35,7 @@ export default async function ArtworkSlugPage({
           </Link>
 
           {caption && (
-            <figcaption className="mt-6 text-xs tracking-wide text-black/70 text-center">
+            <figcaption className="mt-6 text-s tracking-wide text-black/70 text-center">
               {caption}.
             </figcaption>
           )}
