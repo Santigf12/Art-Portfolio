@@ -1,4 +1,4 @@
-// lib/strapi.ts
+// lib/strapi.server.ts
 import { draftMode } from "next/headers";
 import type { About, Artwork, Lang, Project, SelectedWork, StrapiResponse } from "./types";
 
@@ -85,10 +85,4 @@ export async function getProjectBySlug(slug: string, locale?: Lang): Promise<Pro
     populate: "*",
   }, locale);
   return response.data[0] || null;
-}
-
-export function getStrapiMedia(url?: string | null): string | null {
-  if (!url) return null;
-  if (url.startsWith("http")) return url;
-  return `${STRAPI_URL}${url}`;
 }

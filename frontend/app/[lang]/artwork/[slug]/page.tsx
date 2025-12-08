@@ -1,5 +1,5 @@
-import { getArtworkBySlug, getStrapiMedia } from "@/lib/strapi.server";
-import { toLang } from "@/lib/strapi.shared";
+import { getArtworkBySlug } from "@/lib/strapi.server";
+import { getStrapiMedia, toLang } from "@/lib/strapi.shared";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
