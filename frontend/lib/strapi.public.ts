@@ -1,7 +1,7 @@
 // lib/strapi.public.ts
 import type { About, Artwork, Lang, Project, SelectedWork, StrapiResponse } from "./types";
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+const STRAPI_URL = process.env.STRAPI_INTERNAL_URL || "http://localhost:1337";
 
 export async function fetchAPI<T>(
   path: string,
