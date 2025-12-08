@@ -1,0 +1,82 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches: ['main']  # Adjust to the branch you'd like to trigger this workflow
+
+env:
+  REGISTRY: ghcr.io
+  BACKEND_IMAGE_NAME: santigf12/art-portfolio-backend
+  FRONTEND_IMAGE_NAME: santigf12/art-portfolio-frontend
+
+jobs:
+  build-and-push-images:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and push backend image
+      - name: Extract backend metadata (tags, labels)
+        id: backend-meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}
+
+      - name: Build and push backend Docker image
+        id: backend-push
+        uses: docker/build-push-action@v4
+        with:
+          context: .  # Main directory as context
+          push: true
+          file: ./Dockerfile.backend  # Specify the Dockerfile for backend
+          tags: |
+            ${{ steps.backend-meta.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}:latest
+          labels: ${{ steps.backend-meta.outputs.labels }}
+
+      # Build and push frontend image
+      - name: Extract frontend metadata (tags, labels)
+        id: frontend-meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}
+
+      - name: Build and push frontend Docker image
+        id: frontend-push
+        uses: docker/build-push-action@v4
+        with:
+          context: .  # Main directory as context
+          push: true
+          file: ./Dockerfile.frontend  # Specify the Dockerfile for frontend
+          tags: |
+            ${{ steps.frontend-meta.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}:latest
+          labels: ${{ steps.frontend-meta.outputs.labels }}
+
+      - name: Generate artifact attestation for backend
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}
+          subject-digest: ${{ steps.backend-push.outputs.digest }}
+          push-to-registry: true
+
+      - name: Generate artifact attestation for frontend
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}
+          subject-digest: ${{ steps.frontend-push.outputs.digest }}
+          push-to-registry: true

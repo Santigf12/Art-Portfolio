@@ -1,0 +1,34 @@
+# docker.frontend
+# Next.js frontend (standalone runtime)
+FROM node:22-alpine AS deps
+WORKDIR /app
+
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+
+FROM node:22-alpine AS build
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY frontend ./
+
+ENV NODE_ENV=production
+RUN npm run build
+
+FROM node:22-alpine AS runtime
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=2568
+ENV HOSTNAME=0.0.0.0
+
+# copy standalone server
+COPY --from=build /app/.next/standalone ./
+# copy static + public assets
+COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/public ./public
+
+EXPOSE 2568
+
+# Next standalone provides server.js at the root of this image
+CMD ["node", "server.js"]

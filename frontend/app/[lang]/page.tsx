@@ -1,11 +1,14 @@
 import { getArtworks, getStrapiMedia } from "@/lib/strapi.server";
+import { toLang } from "@/lib/strapi.shared";
 import type { Artwork } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home({ params, }: { params: Promise<{ lang: "en" | "es" | "fr" }> }) {
+export default async function Home({ params, }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  const artworks: Artwork[] = await getArtworks(lang);
+  const locale = toLang(lang); 
+  
+  const artworks: Artwork[] = await getArtworks(locale);
 
   return (
     <div>

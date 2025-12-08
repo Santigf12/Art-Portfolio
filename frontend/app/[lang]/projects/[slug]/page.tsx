@@ -1,12 +1,13 @@
 import ProjectCarousel from "@/components/ProjectCarousel";
 import { getProjectBySlug } from "@/lib/strapi.server";
-import type { Lang } from "@/lib/types";
+import { toLang } from "@/lib/strapi.shared";
 import { notFound } from "next/navigation";
 
-export default async function ProjectSlugPage({ params, }: { params: Promise<{ lang: Lang; slug: string }>; }) {
+export default async function ProjectSlugPage({ params, }: { params: Promise<{ lang: string; slug: string }>; }) {
   const { lang, slug } = await params;
+  const locale = toLang(lang); 
 
-  const p = await getProjectBySlug(slug, lang);
+  const p = await getProjectBySlug(slug, locale);
   if (!p) return notFound();
 
   return (

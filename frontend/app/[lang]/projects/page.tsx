@@ -1,12 +1,13 @@
 import ProjectCarousel from "@/components/ProjectCarousel";
 import { getProjects } from "@/lib/strapi.server";
-import type { Lang } from "@/lib/types";
+import { toLang } from "@/lib/strapi.shared";
 import Link from "next/link";
 
 
-export default async function ProjectsPage({ params, }: { params: Promise<{ lang: Lang }> }) {
+export default async function ProjectsPage({ params, }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  const projects = await getProjects(lang);
+  const locale = toLang(lang); 
+  const projects = await getProjects(locale);
 
   if (!projects?.length) {
     return <div className="p-12 text-sm text-black/60">No projects yet.</div>;
