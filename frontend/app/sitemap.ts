@@ -2,6 +2,9 @@
 import { LOCALES, type Lang } from "@/lib/types";
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://ana-barbara.com").replace(/\/$/, "");
 
 const STRAPI_URL = (
