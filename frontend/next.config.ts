@@ -16,8 +16,7 @@ const nextConfig: NextConfig = {
         pathname: "/uploads/**",
       },
     ],
-
-    // In dev you can keep unoptimized if you want
+    
     unoptimized: process.env.NODE_ENV === "development",
   },
 };
