@@ -114,11 +114,11 @@ export default function Sidebar() {
             rel="noopener noreferrer"
             className="group inline-block"
           >
-            <span className="relative block w-32 h-32 group-hover:hidden">
+            <span className="relative block w-28 h-28 group-hover:hidden">
               <Image src="/substack.png" alt="" fill className="object-contain" />
             </span>
 
-            <span className="relative hidden w-32 h-32 group-hover:block">
+            <span className="relative hidden w-28 h-28 group-hover:block">
               <Image src="/substack-hover.png" alt="" fill className="object-contain" />
             </span>
           </a>

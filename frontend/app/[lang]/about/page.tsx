@@ -16,7 +16,7 @@ export default async function AboutPage({ params, }: { params: Promise<{ lang: s
       <div className="mx-auto h-full px-25 flex items-center overflow-x-hidden">
         {/* scroll only this block if content is long */}
         <div className="w-full overflow-x-hidden">
-          <div className="text-xl leading-relaxed text-black">
+          <div className="text-base leading-relaxed text-black">
             <BlocksRenderer content={about.bio as never} />
           </div>
         </div>
