@@ -37,7 +37,7 @@ export default async function ArtworkSlugPage({ params, }: { params: Promise<{ s
           </Link>
 
           {caption && (
-            <figcaption className="mt-6 text-s tracking-wide text-black/70 text-center">
+            <figcaption className="mt-6 text-xs tracking-wide text-black/70 text-center">
               {caption}.
             </figcaption>
           )}

@@ -60,7 +60,7 @@ export default function Sidebar() {
       {/* Make it a column so we can push the bottom link down */}
       <div className="h-full flex flex-col">
         <div className="p-4">
-          <h1 className="text-4xl leading-none mb-6 font-semibold tracking-tight">
+          <h1 className="text-base leading-none mb-6 font-semibold tracking-tight">
             <Link href={`/${lang}`} className="hover:opacity-80 transition">
               ana bárbara
             </Link>
@@ -81,26 +81,21 @@ export default function Sidebar() {
             ))}
           </div>
 
-          <nav className="text-sm leading-6 font-semibold">
-            <Link href={href("about")} className="block hover:opacity-80 transition">
+          <nav className="text-xs font-semibold">
+            <Link href={href("about")} className="block hover:opacity-80 hover:text-red-600">
               {t.about}
             </Link>
-            <Link href={href("selected-works")} className="block hover:opacity-80 transition">
+            <Link href={href("selected-works")} className="block hover:opacity-80 hover:text-red-600">
               {t.selected}
             </Link>
-            <Link href={href("projects")} className="block hover:opacity-80 transition">
+            <Link href={href("projects")} className="block hover:opacity-80 hover:text-red-600">
               {t.projects}
             </Link>
-          </nav>
-
-          <div className="my-4 h-px" /> {/* space hidden divider */}
-
-          <nav className="text-sm leading-6 font-semibold">
             <a
               href="mailto:barbigf_4@hotmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="block hover:opacity-80 transition"
+              className="block hover:opacity-80 hover:text-red-600"
             >
               email
             </a>
@@ -114,11 +109,11 @@ export default function Sidebar() {
             rel="noopener noreferrer"
             className="group inline-block"
           >
-            <span className="relative block w-28 h-28 group-hover:hidden">
+            <span className="relative block w-18 h-18 group-hover:hidden">
               <Image src="/substack.png" alt="" fill className="object-contain" />
             </span>
 
-            <span className="relative hidden w-28 h-28 group-hover:block">
+            <span className="relative hidden w-18 h-18 group-hover:block">
               <Image src="/substack-hover.png" alt="" fill className="object-contain" />
             </span>
           </a>
