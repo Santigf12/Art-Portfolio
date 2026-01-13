@@ -1,8 +1,16 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ana-barbara.com";
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-plex-mono",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,8 +36,6 @@ export const metadata: Metadata = {
     title: "Ana Bárbara — Artist Portfolio",
     description: "Mexican multidisciplinary artist based in Paris",
     siteName: "Ana Bárbara",
-    // add an image later if you have one:
-    // images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Ana Bárbara" }],
   },
 
   robots: {
@@ -40,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={plexMono.variable}>
       <body className="antialiased bg-white text-black">{children}</body>
     </html>
   );

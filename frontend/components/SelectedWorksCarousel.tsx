@@ -75,7 +75,7 @@ export default function SelectedWorksCarousel({ items }: { items: SelectedWork[]
                         className="w-full h-auto max-h-[85dvh] object-contain"
                     />
                     {caption && (
-                      <figcaption className="mt-6 text-s tracking-wide text-black/70 text-center">
+                      <figcaption className="mt-6 text-xs tracking-wide text-black/70 text-center [font-family:var(--font-plex-mono)]">
                         {caption}.
                       </figcaption>
                     )}

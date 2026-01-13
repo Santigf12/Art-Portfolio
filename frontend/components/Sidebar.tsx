@@ -56,7 +56,7 @@ export default function Sidebar() {
   const substackImgHover = "/substack-hover.png"; // hover
 
   return (
-    <aside className="fixed left-6 top-6 bottom-6 w-56 bg-white">
+    <aside className="fixed left-2.5 top-6 bottom-6 w-56 bg-white">
       {/* Make it a column so we can push the bottom link down */}
       <div className="h-full flex flex-col">
         <div className="p-4">
@@ -66,14 +66,16 @@ export default function Sidebar() {
             </Link>
           </h1>
 
-          <div className="mb-6 flex gap-2 text-xs font-semibold uppercase tracking-wide">
+          <div className="mb-6 flex gap-4 text-xs font-semibold tracking-wide">
             {LOCALES.map((l) => (
               <Link
                 key={l}
                 href={switchLocaleHref(l)}
                 className={[
-                  "rounded px-2 py-1 transition",
-                  l === lang ? "bg-black text-white" : "text-black hover:opacity-70",
+                  "relative py-1 transition-opacity",
+                  l === lang
+                    ? "text-black after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-black after:content-['']"
+                    : "text-black hover:opacity-70",
                 ].join(" ")}
               >
                 {l}
