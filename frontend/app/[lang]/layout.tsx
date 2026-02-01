@@ -10,7 +10,9 @@ export default async function LangLayout({ children, params,}: { children: React
     <>
       <SetHtmlLang lang={locale} />
       <Sidebar />
-      <main className="min-h-screen pt-6 pr-6 pb-6 pl-[calc(14rem+1.5rem)]">
+      <main
+        className="min-h-screen pt-24 px-4 pb-6 md:pt-6 md:pr-6 md:pb-6 md:px-0 md:pl-[calc(14rem+1.5rem)]"
+      >
         {children}
       </main>
     </>
