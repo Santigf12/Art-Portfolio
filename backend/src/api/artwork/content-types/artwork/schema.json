@@ -42,10 +42,7 @@
       },
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
     "medium": {
       "type": "string",
@@ -82,7 +79,7 @@
       "type": "uid",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "targetField": "title",
